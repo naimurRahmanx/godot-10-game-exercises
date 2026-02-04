@@ -1,0 +1,22 @@
+# Godot specific
+.import/
+.export/
+.export_presets.cfg
+
+# Godot cache
+.godot/
+
+# Mono / C# (safe even if unused)
+.mono/
+data_*/
+bin/
+obj/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor backups
+*.tmp
+*.bak
+*.old

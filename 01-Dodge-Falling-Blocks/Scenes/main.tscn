@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dstnnvgl0ofiw"]
+
+[ext_resource type="Script" uid="uid://dehvtyuq1kyac" path="res://Scripts/main.gd" id="1_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://clvayimpua0hr" path="res://Scenes/Player.tscn" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://kq38sjbkxfx5" path="res://Scenes/Block.tscn" id="2_8gbba"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_bo1nx")
+block_scene = ExtResource("2_8gbba")
+
+[node name="Player" parent="." instance=ExtResource("1_jjgbg")]
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
