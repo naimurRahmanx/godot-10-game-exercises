@@ -4,10 +4,11 @@
 ## Screenshots
 
 ### Gameplay
-![Gameplay](screenshots/gameplay.png)
+![Gameplay](https://raw.githubusercontent.com/naimurRahmanx/godot-10-game-exercises/main/01-Dodge-Falling-Blocks/screenshots/gameplay.png)
 
 ### Game Over
-![Game Over](screenshots/game-over.png)
+![Game Over](https://raw.githubusercontent.com/naimurRahmanx/godot-10-game-exercises/main/01-Dodge-Falling-Blocks/screenshots/game-over.png)
+
 
 ## Goal
 Move the player left and right to avoid falling blocks.
