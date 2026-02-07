@@ -4,10 +4,10 @@
 ## Screenshots
 
 ### Gameplay
-![Gameplay](./screenshots/gameplay.png)
+![Gameplay]([./screenshots/gameplay.png](https://github.com/naimurRahmanx/godot-10-game-exercises/blob/main/01-Dodge-Falling-Blocks/screenshots/gameplay.png?raw=true))
 
 ### Game Over
-![Game Over](./screenshots/game-over.png)
+![Game Over]([./screenshots/game-over.png](https://github.com/naimurRahmanx/godot-10-game-exercises/blob/main/01-Dodge-Falling-Blocks/screenshots/game-over.png?raw=true))
 
 
 ## Goal
