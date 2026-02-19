@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3e17m1p8u738"]
+
+[ext_resource type="Script" uid="uid://r2e1ppmvug31" path="res://Scripts/main.gd" id="1_r150o"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c1w88"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_r150o")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 321.0
+offset_top = 252.0
+offset_right = 802.0
+offset_bottom = 557.0
+
+[node name="Layout" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/Layout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_c1w88")
+horizontal_alignment = 1
+
+[node name="ClickButton" type="Button" parent="MarginContainer/Layout"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Click"
+
+[connection signal="pressed" from="MarginContainer/Layout/ClickButton" to="." method="_on_click_button_pressed"]
