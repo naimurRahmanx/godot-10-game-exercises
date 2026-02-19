@@ -1,5 +1,10 @@
-# Godot 4+ specific ignores
-
+# Godot 4
 .godot/
 .import/
 export_presets.cfg
+*.uid
+*.import
+
+# OS
+.DS_Store
+Thumbs.db
