@@ -1,3 +1,30 @@
-# Godot 4+ specific ignores
+# Godot 4 cache folders
 .godot/
-/android/
+.import/
+
+# Mono / C# (only if ever used)
+.mono/
+
+# Export templates / build outputs
+build/
+bin/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor cache (optional)
+.editor/
+
+# VSCode (optional)
+.vscode/
+
+# JetBrains (optional)
+.idea/
