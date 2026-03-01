@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://h41k2slripxo"]
+
+[ext_resource type="PackedScene" uid="uid://c30cmh3a3deov" path="res://Scenes/enemy.tscn" id="1_8gbba"]
+[ext_resource type="Script" uid="uid://c4nvk43n8hhtp" path="res://Scripts/main.gd" id="1_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://5b1kt63euamf" path="res://Scenes/ball.tscn" id="2_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://nbu5lxbc66ui" path="res://Scenes/player.tscn" id="3_kry3j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbba"]
+size = Vector2(19.5, 650.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjvhh"]
+size = Vector2(1150, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kry3j"]
+size = Vector2(1151, 20)
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_jjvhh")
+
+[node name="enemy" parent="." instance=ExtResource("1_8gbba")]
+position = Vector2(1082, 335)
+
+[node name="ball" parent="." instance=ExtResource("2_jjvhh")]
+position = Vector2(578, 329)
+
+[node name="player" parent="." instance=ExtResource("3_kry3j")]
+position = Vector2(92, 327)
+
+[node name="left_wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left_wall"]
+position = Vector2(-8.25, 322.5)
+shape = SubResource("RectangleShape2D_8gbba")
+
+[node name="right_wall" type="StaticBody2D" parent="."]
+position = Vector2(1171, 80)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right_wall"]
+position = Vector2(-10, 245.25)
+shape = SubResource("RectangleShape2D_8gbba")
+
+[node name="top_wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="top_wall"]
+position = Vector2(577, -24)
+shape = SubResource("RectangleShape2D_jjvhh")
+
+[node name="bottom_wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom_wall"]
+position = Vector2(575.5, 659)
+shape = SubResource("RectangleShape2D_kry3j")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="PlayerScore" type="Label" parent="UI"]
+offset_left = 27.0
+offset_top = 20.0
+offset_right = 216.0
+offset_bottom = 92.0
+
+[node name="EnemyScore" type="Label" parent="UI"]
+offset_left = 929.0
+offset_top = 15.0
+offset_right = 1123.0
+offset_bottom = 89.0
