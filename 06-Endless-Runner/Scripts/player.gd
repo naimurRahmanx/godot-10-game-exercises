@@ -1,6 +1,4 @@
 
-Copy
-
 extends CharacterBody2D
 
 # ─────────────────────────────────────────
