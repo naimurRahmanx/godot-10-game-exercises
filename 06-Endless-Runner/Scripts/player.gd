@@ -23,12 +23,12 @@ extends CharacterBody2D
 # JUMP POLISH TIMERS
 # ─────────────────────────────────────────
 
-# COYOTE TIME
+# COYOTE TIME -> Just stepped of a platform/floor
 # small grace time after leaving the floor where jumping is still allowed
 var coyote_time := 0.15
 var coyote_timer := 0.0
 
-# JUMP BUFFER
+# JUMP BUFFER -> Recently pressed jump
 # remembers jump input if player presses jump just before landing
 var jump_buffer_time := 0.15
 var jump_buffer_timer := 0.0
