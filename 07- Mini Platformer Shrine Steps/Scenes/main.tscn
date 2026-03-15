@@ -1,0 +1,119 @@
+[gd_scene load_steps=8 format=3 uid="uid://dsji2fqfiki5r"]
+
+[ext_resource type="Script" uid="uid://yw7ml5ealf6m" path="res://Scripts/main.gd" id="1_8gbba"]
+[ext_resource type="Script" uid="uid://cyv7rg3e3h45o" path="res://Scripts/player.gd" id="1_bo1nx"]
+[ext_resource type="Texture2D" uid="uid://dxdm84vod4f34" path="res://icon.svg" id="2_8gbba"]
+[ext_resource type="Script" uid="uid://crpbffgar5vop" path="res://Scripts/destination.gd" id="4_jjvhh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjgbg"]
+size = Vector2(127, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bo1nx"]
+size = Vector2(220, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbba"]
+size = Vector2(129, 125)
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_8gbba")
+
+[node name="player" type="CharacterBody2D" parent="." groups=["Player"]]
+script = ExtResource("1_bo1nx")
+
+[node name="Sprite2D" type="Sprite2D" parent="player"]
+texture = ExtResource("2_8gbba")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_jjgbg")
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position_smoothing_enabled = true
+position_smoothing_speed = 15.0
+
+[node name="floor3" type="StaticBody2D" parent="."]
+position = Vector2(451, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="floor3"]
+position = Vector2(-402, 195)
+scale = Vector2(1.7031251, 0.36328125)
+texture = ExtResource("2_8gbba")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor3"]
+position = Vector2(-403.5, 196)
+shape = SubResource("RectangleShape2D_bo1nx")
+
+[node name="floor2" type="StaticBody2D" parent="."]
+position = Vector2(805, -125)
+
+[node name="Sprite2D" type="Sprite2D" parent="floor2"]
+position = Vector2(-402.5, 195)
+scale = Vector2(1.6796875, 0.36328125)
+texture = ExtResource("2_8gbba")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor2"]
+position = Vector2(-403.5, 196)
+shape = SubResource("RectangleShape2D_bo1nx")
+
+[node name="floor" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="floor"]
+position = Vector2(-448.49997, 195)
+scale = Vector2(1.7109374, 0.36328125)
+texture = ExtResource("2_8gbba")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+position = Vector2(-448, 196)
+shape = SubResource("RectangleShape2D_bo1nx")
+
+[node name="Destination" type="Area2D" parent="."]
+script = ExtResource("4_jjvhh")
+
+[node name="Sprite2D" type="Sprite2D" parent="Destination"]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(159, -226)
+texture = ExtResource("2_8gbba")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Destination"]
+position = Vector2(159.5, -225.5)
+shape = SubResource("RectangleShape2D_8gbba")
+
+[node name="GameOverCanvas" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="Panel" type="Panel" parent="GameOverCanvas"]
+offset_left = 579.0
+offset_top = 354.0
+offset_right = 619.0
+offset_bottom = 394.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="Sprite2D" parent="GameOverCanvas/Panel"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-25.500008, -16.499979)
+scale = Vector2(11.570312, 6.726563)
+texture = ExtResource("2_8gbba")
+
+[node name="Label" type="Label" parent="GameOverCanvas/Panel"]
+layout_mode = 0
+offset_left = -599.0
+offset_top = -340.0
+offset_right = 587.0
+offset_bottom = 347.0
+theme_override_font_sizes/font_size = 130
+text = "You Win!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RestartBtn" type="Button" parent="GameOverCanvas/Panel"]
+layout_mode = 0
+offset_left = -132.0
+offset_top = 109.0
+offset_right = 115.0
+offset_bottom = 210.0
+theme_override_font_sizes/font_size = 60
+text = "Restart"
+
+[connection signal="body_entered" from="Destination" to="Destination" method="_on_body_entered"]
+[connection signal="pressed" from="GameOverCanvas/Panel/RestartBtn" to="." method="_restart_game"]
