@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://c15mdytgi0ay8"]
+
+[ext_resource type="Script" uid="uid://bqvys45oh08hj" path="res://Scripts/main/main.gd" id="1_b3x3g"]
+[ext_resource type="Script" uid="uid://b2hgdfk4463gm" path="res://Scripts/enemy_spawner/enemy_spawner.gd" id="2_4etoo"]
+[ext_resource type="PackedScene" uid="uid://dh8mblcius6ro" path="res://Scenes/player/player.tscn" id="2_w1fgp"]
+[ext_resource type="PackedScene" uid="uid://bssqmdjxfr5wf" path="res://Scenes/enemy/enemy.tscn" id="3_4etoo"]
+[ext_resource type="Script" uid="uid://b6lgq4onio4yd" path="res://Scripts/game_manager/game_manager.gd" id="4_wcurd"]
+[ext_resource type="Script" uid="uid://man8ukjtjgqn" path="res://Scripts/ui/ui.gd" id="5_brlrh"]
+[ext_resource type="Script" uid="uid://ppjooju08hfa" path="res://Scripts/pool_manager/pool_manager.gd" id="6_4jhlv"]
+[ext_resource type="PackedScene" uid="uid://cl6o34rouhxdk" path="res://Scenes/bullet/bullet.tscn" id="8_hgq70"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_b3x3g")
+
+[node name="Player" parent="." instance=ExtResource("2_w1fgp")]
+position = Vector2(101, 104)
+
+[node name="EnemySpawner" type="Node2D" parent="."]
+script = ExtResource("2_4etoo")
+enemy_scene = ExtResource("3_4etoo")
+
+[node name="Timer" type="Timer" parent="EnemySpawner"]
+wait_time = 3.0
+autostart = true
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("4_wcurd")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1150.0
+offset_bottom = 654.0
+script = ExtResource("5_brlrh")
+
+[node name="HealthLabel" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+horizontal_alignment = 2
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 653.0
+theme_override_font_sizes/font_size = 60
+text = "GAME OVER! 
+---Press 'R' To Restart---"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BulletContainer" type="Node2D" parent="."]
+
+[node name="PoolManager" type="Node" parent="."]
+script = ExtResource("6_4jhlv")
+bullet_scene = ExtResource("8_hgq70")
+
+[connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_timer_timeout"]
